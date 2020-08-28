@@ -1,11 +1,14 @@
-data = File.write('./procesos_filtrados,data')
+num = ARGV[0].to_i
+data = File.open('./procesos.data').map(&:to_i)
+# data = [256, 258, 489, 663, 100]
 
-n = ARGV[0]
 filtro = []
-procesos = [121, 141, 159, 131, 199, 121, 299, 312, 412, 024, 213]
 
-n.times do |i|
-    if data[i] > n
-    filtro.push data[i]
-    end
-end
+        data.each do |i|
+                if i > num
+                filtro.push i
+                end
+        end
+
+
+File.write('procesos_filtrados.data', filtro)
